@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSitesTable extends Migration
+class CreateInterestPointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sites', function (Blueprint $table) {
+        Schema::create('interest_points', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->unsignedBigInteger('site_id')->nullable();
-            $table->foreign('site_id')->references('id')->on('sites');
+            $table->string('qr')->nullable();
+            $table->integer('distance')->nullable();
+            $table->decimal('latitude')->nullable();
+            $table->decimal('longitude')->nullable();
+            $table->unsignedBigInteger('site_id');
             $table->unsignedBigInteger('creator');
             $table->unsignedBigInteger('updater');
-
+            $table->foreign('site_id')->references('id')->on('sites');
             $table->foreign('creator')->references('id')->on('users');
             $table->foreign('updater')->references('id')->on('users');
 
@@ -37,6 +38,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sites');
+        Schema::dropIfExists('interest_points');
     }
 }
