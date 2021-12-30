@@ -15,12 +15,10 @@ class CreateVideoItemTable extends Migration
     {
         Schema::create('video_item', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('video_id');
+            $table->foreignId('video_id')->references('id')->on('videos');
             $table->string('quality', 45)->nullable();
             $table->string('format', 45)->nullable();
             $table->string('orientation', 45)->nullable();
-
-            $table->foreign('video_id')->references('id')->on('videos');
         });
     }
 

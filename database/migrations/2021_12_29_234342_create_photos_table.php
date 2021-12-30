@@ -16,18 +16,12 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('route', 245);
-            $table->unsignedBigInteger('interest_point_id');
+            $table->foreignId('interest_point_id')->references('id')->on('interest_points');
             $table->integer('order');
             $table->timestamps();
-            $table->unsignedBigInteger('creator');
-            $table->unsignedBigInteger('updater');
-            $table->unsignedBigInteger('thematic_area_id');
-
-            $table->foreign('interest_point_id')->references('id')->on('interest_points');
-            $table->foreign('creator')->references('id')->on('users');
-            $table->foreign('updater')->references('id')->on('users');
-            $table->foreign('thematic_area_id')->references('id')->on('thematic_areas');
-
+            $table->foreignId('creator')->references('id')->on('users');
+            $table->foreignId('updater')->references('id')->on('users');
+            $table->foreignId('thematic_area_id')->references('id')->on('thematic_areas');
         });
     }
 

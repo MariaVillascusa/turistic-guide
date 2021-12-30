@@ -17,14 +17,10 @@ class CreateSitesTable extends Migration
             $table->id();
             $table->string('name', 45);
             $table->string('description', 45)->nullable();
-            $table->unsignedBigInteger('site_id')->nullable();
+            $table->foreignId('site_id')->nullable()->references('id')->on('sites');
             $table->timestamps();
-            $table->unsignedBigInteger('creator');
-            $table->unsignedBigInteger('updater');
-
-            $table->foreign('site_id')->references('id')->on('sites');
-            $table->foreign('creator')->references('id')->on('users');
-            $table->foreign('updater')->references('id')->on('users');
+            $table->foreignId('creator')->references('id')->on('users');
+            $table->foreignId('updater')->references('id')->on('users');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThematicAreaUserTable extends Migration
+class CreateAreaUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateThematicAreaUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('thematic_area_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('thematic_area_id');
-            $table->unsignedBigInteger('user_id');
+        Schema::create('area_user', function (Blueprint $table) {
+            $table->foreignId('thematic_area_id')->references('id')->on('thematic_areas');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->date('date');
             $table->boolean('active');
 
             $table->primary(['thematic_area_id', 'user_id', 'date']);
-
-            $table->foreign('thematic_area_id')->references('id')->on('thematic_areas');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

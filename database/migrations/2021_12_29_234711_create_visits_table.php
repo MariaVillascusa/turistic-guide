@@ -23,9 +23,7 @@ class CreateVisitsTable extends Migration
             $table->string('ssooversion', 45);
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
-            $table->unsignedBigInteger('interest_point_id');
-
-            $table->foreign('interest_point_id')->references('id')->on('interest_points');
+            $table->foreignId('interest_point_id')->references('id')->on('interest_points');
         });
     }
 
