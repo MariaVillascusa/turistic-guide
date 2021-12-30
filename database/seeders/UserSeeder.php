@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ThematicArea;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+        $areas = ThematicArea::all();
+
         User::create([
 
             'login' => 'pepe1',
@@ -23,7 +27,10 @@ class UserSeeder extends Seeder
             'profile' => 'admin',
         ]);
 
-        User::factory(15)->create();
+        User::factory(15)->create()->each(function ($user) use ($areas) {
+
+            $user->areas()->attach($areas->random(rand(0,4)), ['date' => now(), 'active' => 1 ]);
+        });
     }
 }
 

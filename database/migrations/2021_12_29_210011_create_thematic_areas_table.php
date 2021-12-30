@@ -17,6 +17,7 @@ class CreateThematicAreasTable extends Migration
             $table->id();
             $table->string('name', 45)->nullable();
             $table->string('description', 245)->nullable();
+            $table->timestamps();
         });
     }
 
