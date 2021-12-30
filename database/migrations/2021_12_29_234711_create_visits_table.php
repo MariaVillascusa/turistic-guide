@@ -15,7 +15,6 @@ class CreateVisitsTable extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-
             $table->dateTime('time');
             $table->string('deviceid', 85);
             $table->string('appversion', 45);
@@ -27,8 +26,6 @@ class CreateVisitsTable extends Migration
             $table->unsignedBigInteger('interest_point_id');
 
             $table->foreign('interest_point_id')->references('id')->on('interest_points');
-
-            $table->timestamps();
         });
     }
 

@@ -15,18 +15,16 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('name', 45);
+            $table->string('description', 45)->nullable();
             $table->unsignedBigInteger('site_id')->nullable();
-            $table->foreign('site_id')->references('id')->on('sites');
+            $table->timestamps();
             $table->unsignedBigInteger('creator');
             $table->unsignedBigInteger('updater');
 
+            $table->foreign('site_id')->references('id')->on('sites');
             $table->foreign('creator')->references('id')->on('users');
             $table->foreign('updater')->references('id')->on('users');
-
-            $table->timestamps();
         });
     }
 

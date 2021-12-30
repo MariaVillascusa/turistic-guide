@@ -15,11 +15,8 @@ class CreateThematicAreasTable extends Migration
     {
         Schema::create('thematic_areas', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
-
-            $table->timestamps();
+            $table->string('name', 45)->nullable();
+            $table->string('description', 245)->nullable();
         });
     }
 

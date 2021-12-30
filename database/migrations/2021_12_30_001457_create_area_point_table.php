@@ -15,15 +15,13 @@ class CreateAreaPointTable extends Migration
     {
         Schema::create('area_point', function (Blueprint $table) {
             $table->unsignedBigInteger('thematic_area_id');
-            $table->foreign('thematic_area_id')->references('id')->on('thematic_areas');
-
             $table->unsignedBigInteger('interest_point_id');
-            $table->foreign('interest_point_id')->references('id')->on('interest_points');
-
             $table->string('title', 145);
             $table->string('description', 2000)->nullable();
-            $table->integer('code_id');
-            $table->index('code_id');
+            $table->integer('code_id')->index();
+
+            $table->foreign('thematic_area_id')->references('id')->on('thematic_areas');
+            $table->foreign('interest_point_id')->references('id')->on('interest_points');
         });
     }
 

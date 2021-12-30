@@ -16,12 +16,10 @@ class CreateAdminSiteTable extends Migration
         Schema::create('admin_site', function (Blueprint $table) {
 
             $table->unsignedBigInteger('site_id');
-            $table->foreign('site_id')->references('id')->on('sites');
-
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->timestamps();
+            $table->foreign('site_id')->references('id')->on('sites');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

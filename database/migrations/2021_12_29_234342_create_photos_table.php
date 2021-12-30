@@ -15,10 +15,10 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-
             $table->string('route', 245);
             $table->unsignedBigInteger('interest_point_id');
             $table->integer('order');
+            $table->timestamps();
             $table->unsignedBigInteger('creator');
             $table->unsignedBigInteger('updater');
             $table->unsignedBigInteger('thematic_area_id');
@@ -28,7 +28,6 @@ class CreatePhotosTable extends Migration
             $table->foreign('updater')->references('id')->on('users');
             $table->foreign('thematic_area_id')->references('id')->on('thematic_areas');
 
-            $table->timestamps();
         });
     }
 
