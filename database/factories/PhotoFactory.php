@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VideoFactory extends Factory
+class PhotoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,10 +14,8 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            'route' => $this->faker->file(public_path('files/videos/'), '/tmp', true),
+            'route' => $this->faker->file(public_path('files/photos/'), '/tmp', true),
             'order' => $this->faker->randomDigitNotNull(),
-            'code_id' => $this->faker->numberBetween(),
-            'description' => $this->faker->sentence(10, true)
         ];
     }
 }

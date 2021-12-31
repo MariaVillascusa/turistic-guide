@@ -18,12 +18,13 @@ class CreateVisitsTable extends Migration
             $table->dateTime('time');
             $table->string('deviceid', 85);
             $table->string('appversion', 45);
-            $table->string('useragent', 95);
+            $table->string('useragent', 200);
             $table->string('ssoo', 45);
             $table->string('ssooversion', 45);
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->foreignId('interest_point_id')->references('id')->on('interest_points');
+            $table->timestamps();
         });
     }
 

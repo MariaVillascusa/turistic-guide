@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             SiteSeeder::class,
             InterestPointSeeder::class,
             VideoSeeder::class,
+            PhotoSeeder::class,
+            VisitSeeder::class,
         ]);
 
     }
