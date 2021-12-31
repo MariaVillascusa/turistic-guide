@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class,
             PhotoSeeder::class,
             VisitSeeder::class,
+            VideoItemSeeder::class
         ]);
 
     }

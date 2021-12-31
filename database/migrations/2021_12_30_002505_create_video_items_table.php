@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideoItemTable extends Migration
+class CreateVideoItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateVideoItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_item', function (Blueprint $table) {
+        Schema::create('video_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('video_id')->references('id')->on('videos');
             $table->string('quality', 45)->nullable();
             $table->string('format', 45)->nullable();
             $table->string('orientation', 45)->nullable();
+            $table->timestamps();
         });
     }
 
