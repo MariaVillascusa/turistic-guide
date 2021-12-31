@@ -23,7 +23,7 @@ class InterestPointSeeder extends  Seeder
     {
         $this->fetchRelations();
 
-        foreach (range(1,15) as $i) {
+        foreach (range(1,40) as $i) {
             $this->createPoints();
         }
     }
@@ -36,7 +36,7 @@ class InterestPointSeeder extends  Seeder
 
     private function createPoints(){
 
-        $site = InterestPoint::factory()->create([
+        InterestPoint::factory()->create([
             'site_id' =>$this->sites->random()->id,
             'creator' => $this->users->random()->id,
             'updater' => $this->users->random()->id

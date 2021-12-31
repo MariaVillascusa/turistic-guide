@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             ThematicAreaSeeder::class,
             UserSeeder::class,
             SiteSeeder::class,
-            InterestPointSeeder::class
+            InterestPointSeeder::class,
+            VideoSeeder::class,
         ]);
 
     }
